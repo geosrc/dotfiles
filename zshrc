@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/dev/esp/xtensa-esp32-elf/bin:$PATH
+export IDF_PATH=$HOME/dev/esp/esp-idf/
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/fabian/.oh-my-zsh
