@@ -35,11 +35,14 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-export PATH=$HOME/bin:/usr/local/bin::$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin::$PATH
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # Aliases
 alias l='ls --color=always -la'
+
+export NVM_DIR="$HOME/.nvm"
+[ -d $NVM_DIR ] && source $NVM_DIR/nvm.sh
 
 # Load machine specific config
 if [ -f ~/.zshrc.local ]; then
