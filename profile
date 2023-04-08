@@ -25,3 +25,14 @@ if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PICO_DIR="$HOME/pico"
+if [ -d "$PICO_DIR" ] ; then
+    export PICO_SDK_PATH="$PICO_DIR/pico-sdk"
+    export PICO_EXAMPLES_PATH="$PICO_DIR/pico-examples"
+    export PICO_EXTRAS_PATH="$PICO_DIR/pico-extras"
+    export PICO_PLAYGROUND_PATH="$PICO_DIR/pico-playground"
+fi

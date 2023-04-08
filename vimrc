@@ -25,11 +25,11 @@ set t_Co=256
 colorscheme desert
 syntax on
 
-"set smartindent
-"set smarttab
-"set tabstop=4
-"set shiftwidth=4
-"set expandtab
+set smartindent
+set smarttab
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 filetype on
 filetype plugin on
@@ -41,7 +41,6 @@ filetype indent on
 "set backspace=eol,start,indent
 "set whichwrap+=<,>,h,l
 
-" Suchen
 "set ignorecase
 "set smartcase
 "set hlsearch    "Hightlight search
