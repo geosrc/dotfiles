@@ -25,7 +25,6 @@ set t_Co=256
 colorscheme desert
 syntax on
 
-" Tab und Einrücken
 "set smartindent
 "set smarttab
 "set tabstop=4
