@@ -53,5 +53,5 @@ fi
 # > sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
 # > sudo chmod +x /usr/local/bin/oh-my-posh
 if type "oh-my-posh" > /dev/null; then
-  eval "$(oh-my-posh init zsh --config '$HOME/dotfiles/fabian.omp.json')"
+  eval "$(oh-my-posh init zsh --config '~/dotfiles/fabian.omp.json')"
 fi
