@@ -1,7 +1,5 @@
-# Prompt
-autoload -Uz promptinit
-promptinit
-prompt suse
+# ~/.zshrc: Loaded only for interactive shell sessions.
+# It is loaded whenever you open a new terminal window or launch a subshell from a terminal window.
 
 setopt histignorealldups sharehistory
 
@@ -35,23 +33,33 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin::$PATH
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+#export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin::$PATH
 
 # Aliases
 alias l='ls --color=always -la'
-
-export NVM_DIR="$HOME/.nvm"
-[ -d $NVM_DIR ] && source $NVM_DIR/nvm.sh
 
 # Load machine specific config
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
 
-# Install via:
-# > sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
-# > sudo chmod +x /usr/local/bin/oh-my-posh
-if type "oh-my-posh" > /dev/null; then
+
+# Load custom prompt tool, if installed
+
+if type "starship" > /dev/null; then
+  # Install (https://starship.rs/guide/):
+  # > cargo install starship --locked
+  export STARSHIP_CONFIG=~/dotfiles/starship.toml
+  eval "$(starship init zsh)"
+elif type "oh-my-posh" > /dev/null; then
+  # Install via:
+  # sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+  # sudo chmod +x /usr/local/bin/oh-my-posh
+  echo "Loading oh-my-posh ..."
   eval "$(oh-my-posh init zsh --config '~/dotfiles/fabian.omp.json')"
+else
+  # Prompt
+  autoload -Uz promptinit
+  promptinit
+  prompt suse
 fi

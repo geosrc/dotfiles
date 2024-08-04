@@ -1,15 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# dotfile root
-cd ..
-
-dotfilesDir=$(pwd)
+set -Eeuo pipefail
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+echo "Script directory: $script_dir"
 
 function linkDotfile {
   dest="${HOME}/.${1}"
   dateStr=$(date +%Y-%m-%d-%H%M)
 
-  if [ -h ~/${1} ]; then
+  if [ -h "${dest}" ]; then
     # Existing symlink 
     echo "Removing existing symlink: ${dest}"
     rm ${dest} 
@@ -25,17 +24,24 @@ function linkDotfile {
     mv ${dest}{,.${dateStr}}
   fi
 
-  echo "Creating new symlink: ${dest}"
-  ln -s ${dotfilesDir}/${1} ${dest}
+  echo "Creating new symlink: ${dest} -> ${script_dir}/${1}"
+  # This script is expected to be in the dotfiles directory
+  ln -s ${script_dir}/${1} ${dest}
 }
+
+# bash
+linkDotfile profile
+linkDotfile bashrc
+
+# zsh
+linkDotfile zshenv
+linkDotfile zprofile
+linkDotfile zshrc
 
 linkDotfile vimrc
 linkDotfile tmux.conf
-linkDotfile bashrc
 #linkDotfile bash_profile
 #linkDotfile .gitconfig
-linkDotfile zshrc
-linkDotfile profile
 
 mkdir -p ~/.vim/bundle
 if [ ! -d ~/.vim/bundle/Vundle.vim ]
