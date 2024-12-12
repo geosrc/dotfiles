@@ -41,6 +41,7 @@ function addPath {
 addPath "/usr/local/bin"
 addPath "$HOME/.local/bin"
 addPath "$HOME/bin"
+addPath "$HOME/dotfiles/bin"
 
 # Disable .NET CLI telemetry
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
